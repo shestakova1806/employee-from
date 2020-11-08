@@ -37,6 +37,18 @@ const theme = createMuiTheme({
       },
     },
   },
+  palette: {
+    primary: {
+      light: "rgba(30, 170, 252, 0.3)",
+      main: "#1EAAFC",
+    },
+    secondary: {
+      light: "#909090",
+      main: "#747474",
+      lightdark: "rgba(151, 151, 151, 0.3)",
+      darl: "#979797",
+    },
+  },
 });
 
 const useStyles = makeStyles({
