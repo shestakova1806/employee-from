@@ -8,12 +8,17 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "470px",
-    height: "790px",
+    height: "700px",
   },
-});
+  textField: {
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
+}));
 
 export const LoginPage = () => {
   const classes = useStyles();
@@ -23,16 +28,32 @@ export const LoginPage = () => {
       <CardContent>
         <Typography>Sign up</Typography>
         <div>
-          <TextField required label="First Name" variant="outlined" />
-          <TextField required label="Last Name" variant="outlined" />
+          <TextField
+            required
+            label="First Name"
+            variant="outlined"
+            className={classes.textField}
+          />
+          <TextField
+            required
+            label="Last Name"
+            variant="outlined"
+            className={classes.textField}
+          />
         </div>
         <div>
-          <TextField required label="Phone Number" variant="outlined" />
+          <TextField
+            required
+            label="Phone Number"
+            variant="outlined"
+            className={classes.textField}
+          />
           <TextField
             required
             select
             label="Amount to invest"
             variant="outlined"
+            className={classes.textField}
           />
         </div>
         <div>
@@ -40,7 +61,9 @@ export const LoginPage = () => {
             required
             fullWidth
             label="Email Address"
+            type="email"
             variant="outlined"
+            className={classes.textField}
           />
         </div>
         <div>
@@ -48,11 +71,20 @@ export const LoginPage = () => {
             fullWidth
             required
             label="Confirm Email Address"
+            type="email"
             variant="outlined"
+            className={classes.textField}
           />
         </div>
         <div>
-          <TextField required fullWidth label="Password" variant="outlined" />
+          <TextField
+            required
+            fullWidth
+            label="Password"
+            type="password"
+            variant="outlined"
+            className={classes.textField}
+          />
         </div>
         <div>
           <TextField
@@ -60,17 +92,20 @@ export const LoginPage = () => {
             fullWidth
             label="Confirm Password"
             variant="outlined"
+            className={classes.textField}
           />
         </div>
         <FormControlLabel
           control={<Checkbox color="primary" />}
           label="I certify that I am 18 years of age or older, and I agree to the Terms of Service and Privacy Policy."
+          className={classes.textField}
         />
         <FormControlLabel
           control={<Checkbox color="primary" />}
           label="I would like to receive important information and periodic news updates."
+          className={classes.textField}
         />
-        <Button disabled variant="contained" color="primary" href="#">
+        <Button disabled variant="contained" color="inherit" href="#">
           CREATE ACCOUNT
         </Button>
       </CardContent>

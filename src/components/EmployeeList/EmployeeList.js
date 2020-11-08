@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { withEmployeeService } from "../hoc";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 import { employeesLoaded } from "../../actions";
 import { compose } from "../../utils";
 import { EmployeeListItem } from "../EmployeeListItem";
@@ -19,15 +20,15 @@ class EmployeeListItems extends Component {
   render() {
     const { employees } = this.props;
     return (
-      <ul className="employeeList">
+      <List>
         {employees.map((employee) => {
           return (
-            <li key={employee.id}>
+            <ListItem alignItems="flex-start" key={employee.id}>
               <EmployeeListItem employee={employee} />
-            </li>
+            </ListItem>
           );
         })}
-      </ul>
+      </List>
     );
   }
 }
