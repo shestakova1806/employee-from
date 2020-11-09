@@ -29,14 +29,38 @@ const useStyles = makeStyles({
     width: "920px",
     height: "300px",
     radius: "5px",
+    display: "flex",
+    alignItems: "center",
   },
   avatar: {
     width: "162px",
     height: "162px",
     display: "flex",
+    marginLeft: "32px",
+    marginRight: "80px",
+  },
+  cardContent: {
+    margin: 0,
+    padding: "0 220px 0 0",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
   },
   name: {
     color: theme.palette.secondary.light,
+    marginTop: "34px",
+    fontFamily: "Lato",
+    fontSize: "30px",
+    letterSpacing: "0.75px",
+    lineHeight: "36px",
+  },
+  position: {
+    marginTop: "44px",
+    marginBottom: "27px",
+    fontSize: "30px",
+    lineHeight: "36px",
+    letterSpacing: "0.75px",
+    fontFamily: "Lato",
   },
 });
 
@@ -48,9 +72,11 @@ export const EmployeeListItem = ({ employee }) => {
     <ThemeProvider theme={theme}>
       <Card className={classes.root} variant="outlined">
         <Avatar src={avatar} className={classes.avatar} />
-        <CardContent>
+        <CardContent className={classes.cardContent}>
           <Typography className={classes.name}>{name}</Typography>
-          <Typography color="secondary">{position}</Typography>
+          <Typography className={classes.position} color="secondary">
+            {position}
+          </Typography>
           <Switch />
         </CardContent>
       </Card>

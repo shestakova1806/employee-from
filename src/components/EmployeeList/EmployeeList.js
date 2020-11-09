@@ -23,7 +23,7 @@ class EmployeeListItems extends Component {
       <List>
         {employees.map((employee) => {
           return (
-            <ListItem alignItems="flex-start" key={employee.id}>
+            <ListItem alignItems="flex-start" padding="0" key={employee.id}>
               <EmployeeListItem employee={employee} />
             </ListItem>
           );
