@@ -5,6 +5,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 
 import "./EmployeeListItem.css";
@@ -62,9 +63,16 @@ const useStyles = makeStyles({
     letterSpacing: "0.75px",
     fontFamily: "Lato",
   },
+  vacation: {
+    color: theme.palette.secondary.main,
+    fontSize: "16px",
+    lineHeight: "16px",
+    letterSpacing: "0.4px",
+    fontFamily: "Lato",
+  },
 });
 
-export const EmployeeListItem = ({ employee }) => {
+export const EmployeeListItem = ({ employee, onChangedVacation }) => {
   const classes = useStyles();
 
   const { avatar, name, position, onVacation } = employee;
@@ -77,7 +85,17 @@ export const EmployeeListItem = ({ employee }) => {
           <Typography className={classes.position} color="secondary">
             {position}
           </Typography>
-          <Switch />
+          <FormControlLabel
+            control={
+              <Switch
+                checked={onVacation}
+                onChange={onChangedVacation}
+                color="primary"
+              />
+            }
+            label="On vacation"
+            className={classes.vacation}
+          />
         </CardContent>
       </Card>
     </ThemeProvider>
