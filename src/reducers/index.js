@@ -28,9 +28,17 @@ export const reducer = (state, action) => {
       };
     case "CHANGED_VACATION":
       return {
-        employees: [],
-        loading: false,
-        error: null,
+        ...state,
+        employees: state.employees.map((employees) => {
+          if (employees.id !== action.payload) {
+            return employees;
+          }
+
+          return {
+            ...employees,
+            onVacation: !employees.onVacation,
+          };
+        }),
       };
     default:
       return state;
