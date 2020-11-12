@@ -1,4 +1,4 @@
-import { LoginPage } from "./LoginPage";
+import { EmployeeForm } from "./EmployeeForm";
 import { HomePage } from "./HomePage";
 
-export { LoginPage, HomePage };
+export { EmployeeForm, HomePage };

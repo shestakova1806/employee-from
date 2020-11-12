@@ -5,7 +5,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 
-import { HomePage, LoginPage } from "../pages";
+import { EmployeeForm, HomePage } from "../pages";
 
 import "./App.css";
 
@@ -67,7 +67,7 @@ export const App = () => {
       <Box className={classes.root}>
         <Container maxWidth="md">
           <Switch>
-            <Route path="/" component={LoginPage} exact />
+            <Route path="/" component={EmployeeForm} exact />
             <Route path="/employees" component={HomePage} />
           </Switch>
         </Container>
