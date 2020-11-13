@@ -35,32 +35,80 @@ const invest = [
   },
 ];
 
-const redirectToHomePage = () => {
-  return <Redirect to="/employees" component={HomePage} />;
-};
+// const redirectToHomePage = () => {
+//   return <Redirect to="/employees" component={HomePage} />;
+// };
 
 export const EmployeeForm = () => {
-  const { values, setValues, handleInputChange } = useForm(initialValues);
+  const { values, setValues, handleInputChange, errors, setErrors } = useForm(
+    initialValues
+  );
+
+  const validate = () => {
+    let temp = {};
+    temp.firstName =
+      values.firstName.length >= 2 && values.firstName.length <= 12
+        ? ""
+        : "This field is not valid";
+    temp.lastName =
+      values.lastName.length >= 2 && values.lastName.length <= 12
+        ? ""
+        : "This field is not valid";
+    temp.phoneNumber =
+      values.phoneNumber.length >= 2 && values.phoneNumber.length <= 12
+        ? ""
+        : "This field is not valid";
+    temp.amountToInvest =
+      values.amountToInvest.length !== 0 ? "" : "This field is required";
+    temp.email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(
+      values.email
+    )
+      ? ""
+      : "Email is not valid";
+    temp.confirmEmail =
+      values.confirmEmail === values.email ? "" : "Email is not correct";
+    temp.password =
+      values.password.length >= 8 ? "" : "Minimum 8 symbols required";
+    temp.confirmPassword =
+      values.confirmPassword === values.password
+        ? ""
+        : "Password is not correct";
+    setErrors({
+      ...temp,
+    });
+
+    return Object.values(temp).every((x) => x === "");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validate()) {
+      window.alert("test");
+    }
+  };
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Controls.Input
         name="firstName"
         label="First Name"
         value={values.firstName}
         onChange={handleInputChange}
+        error={errors.firstName}
       />
       <Controls.Input
         name="lastName"
         label="Last Name"
         value={values.lastName}
         onChange={handleInputChange}
+        error={errors.lastName}
       />
       <Controls.Input
         name="phoneNumber"
         label="Phone Number"
         value={values.phoneNumber}
         onChange={handleInputChange}
+        error={errors.phoneNumber}
       />
       <Controls.Select
         name="amountToInvest"
@@ -68,30 +116,35 @@ export const EmployeeForm = () => {
         value={values.amountToInvest}
         onChange={handleInputChange}
         options={invest}
+        error={errors.amountToInvest}
       />
       <Controls.Input
         name="email"
         label="Email"
         value={values.email}
         onChange={handleInputChange}
+        error={errors.email}
       />
       <Controls.Input
         name="confirmEmail"
         label="Confirm Email"
         value={values.confirmEmail}
         onChange={handleInputChange}
+        error={errors.confirmEmail}
       />
       <Controls.Input
         name="password"
         label="Password"
         value={values.password}
         onChange={handleInputChange}
+        error={errors.password}
       />
       <Controls.Input
         name="confirmPassword"
         label="Confirm Password"
         value={values.confirmPassword}
         onChange={handleInputChange}
+        error={errors.confirmPassword}
       />
       <Controls.Checkbox
         name="isAdult"
@@ -105,7 +158,7 @@ export const EmployeeForm = () => {
         value={values.isGetNews}
         onChange={handleInputChange}
       />
-      <Controls.Button text="CREATE ACCOUNT" onClick={redirectToHomePage} />
+      <Controls.Button text="CREATE ACCOUNT" type="Submit" />
     </Form>
   );
 };
