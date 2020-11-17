@@ -46,7 +46,7 @@ const theme = createMuiTheme({
       light: "#909090",
       main: "#747474",
       lightdark: "rgba(151, 151, 151, 0.3)",
-      darl: "#979797",
+      dark: "#979797",
     },
   },
 });
@@ -54,8 +54,6 @@ const theme = createMuiTheme({
 const useStyles = makeStyles({
   root: {
     background: "#ECF6FE",
-    height: "100%",
-    width: "100%",
   },
 });
 

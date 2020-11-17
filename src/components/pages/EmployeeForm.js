@@ -1,8 +1,50 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-import { HomePage } from "./index";
-import { useForm, Form } from "../hoc/index";
+import { withRouter } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import { Controls } from "../Controls/Controls";
+
+const validationSchema = yup.object({
+  firstName: yup
+    .string()
+    .min(2, "Minimum 2 chars")
+    .max(12, "Maximum 12 chars")
+    .required("First name is required"),
+  lastName: yup
+    .string()
+    .min(2, "Minimum 2 chars")
+    .max(12, "Maximum 12 chars")
+    .required("Last name is required"),
+  phoneNumber: yup
+    .string()
+    .min(2, "Minimum 2 chars")
+    .max(12, "Maximum 12 chars")
+    .required("Phone number is required"),
+  amountToInvest: yup
+    .string()
+    .oneOf(["1000", "5000", "10000"], "Invalid amount")
+    .required("Amount to invest is required"),
+  email: yup
+    .string()
+    .min(2, "Minimum 2 chars")
+    .max(12, "Maximum 12 chars")
+    .required("Email is required"),
+  confirmEmail: yup
+    .string()
+    .min(2, "Minimum 2 chars")
+    .max(12, "Maximum 12 chars")
+    .required("Confirming email is required")
+    .oneOf([yup.ref("email")], "Email does not match"),
+  password: yup
+    .string()
+    .min(8, "Minimum 8 chars")
+    .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .min(8, "Minimum 8 chars")
+    .required("Password is required")
+    .oneOf([yup.ref("password")], "Password does not match"),
+});
 
 const initialValues = {
   firstName: "",
@@ -35,130 +77,103 @@ const invest = [
   },
 ];
 
-// const redirectToHomePage = () => {
-//   return <Redirect to="/employees" component={HomePage} />;
-// };
+const Form = (props) => {
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: () => {
+      props.history.push("/employees");
+    },
+  });
 
-export const EmployeeForm = () => {
-  const { values, setValues, handleInputChange, errors, setErrors } = useForm(
-    initialValues
-  );
-
-  const validate = () => {
-    let temp = {};
-    temp.firstName =
-      values.firstName.length >= 2 && values.firstName.length <= 12
-        ? ""
-        : "This field is not valid";
-    temp.lastName =
-      values.lastName.length >= 2 && values.lastName.length <= 12
-        ? ""
-        : "This field is not valid";
-    temp.phoneNumber =
-      values.phoneNumber.length >= 2 && values.phoneNumber.length <= 12
-        ? ""
-        : "This field is not valid";
-    temp.amountToInvest =
-      values.amountToInvest.length !== 0 ? "" : "This field is required";
-    temp.email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(
-      values.email
-    )
-      ? ""
-      : "Email is not valid";
-    temp.confirmEmail =
-      values.confirmEmail === values.email ? "" : "Email is not correct";
-    temp.password =
-      values.password.length >= 8 ? "" : "Minimum 8 symbols required";
-    temp.confirmPassword =
-      values.confirmPassword === values.password
-        ? ""
-        : "Password is not correct";
-    setErrors({
-      ...temp,
-    });
-
-    return Object.values(temp).every((x) => x === "");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      window.alert("test");
-    }
-  };
+  console.log(formik);
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
       <Controls.Input
         name="firstName"
         label="First Name"
-        value={values.firstName}
-        onChange={handleInputChange}
-        error={errors.firstName}
+        value={formik.values.firstName}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        error={formik.touched.firstName && formik.errors.firstName}
       />
       <Controls.Input
         name="lastName"
         label="Last Name"
-        value={values.lastName}
-        onChange={handleInputChange}
-        error={errors.lastName}
+        value={formik.values.lastName}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        error={formik.touched.lastName && formik.errors.lastName}
       />
       <Controls.Input
         name="phoneNumber"
         label="Phone Number"
-        value={values.phoneNumber}
-        onChange={handleInputChange}
-        error={errors.phoneNumber}
+        value={formik.values.phoneNumber}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        error={formik.touched.phoneNumber && formik.errors.phoneNumber}
       />
       <Controls.Select
         name="amountToInvest"
         label="Amount To Invest"
-        value={values.amountToInvest}
-        onChange={handleInputChange}
+        value={formik.values.amountToInvest}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
         options={invest}
-        error={errors.amountToInvest}
+        error={formik.touched.amountToInvest && formik.errors.amountToInvest}
       />
       <Controls.Input
         name="email"
         label="Email"
-        value={values.email}
-        onChange={handleInputChange}
-        error={errors.email}
+        value={formik.values.email}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        error={formik.touched.email && formik.errors.email}
       />
       <Controls.Input
         name="confirmEmail"
         label="Confirm Email"
-        value={values.confirmEmail}
-        onChange={handleInputChange}
-        error={errors.confirmEmail}
+        value={formik.values.confirmEmail}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        error={formik.touched.confirmEmail && formik.errors.confirmEmail}
       />
       <Controls.Input
         name="password"
         label="Password"
-        value={values.password}
-        onChange={handleInputChange}
-        error={errors.password}
+        value={formik.values.password}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        error={formik.touched.password && formik.errors.password}
       />
       <Controls.Input
         name="confirmPassword"
         label="Confirm Password"
-        value={values.confirmPassword}
-        onChange={handleInputChange}
-        error={errors.confirmPassword}
+        value={formik.values.confirmPassword}
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        error={formik.touched.confirmPassword && formik.errors.confirmPassword}
       />
       <Controls.Checkbox
         name="isAdult"
         label="I certify that I am 18 years of age or older, and I agree to the Terms of Service and Privacy Policy."
-        value={values.isAdult}
-        onChange={handleInputChange}
+        value={formik.values.isAdult}
+        onChange={formik.handleChange}
       />
       <Controls.Checkbox
         name="isGetNews"
         label="I would like to receive important information and periodic news updates."
-        value={values.isGetNews}
-        onChange={handleInputChange}
+        value={formik.values.isGetNews}
+        onChange={formik.handleChange}
       />
-      <Controls.Button text="CREATE ACCOUNT" type="Submit" />
-    </Form>
+      <Controls.Button
+        text="CREATE ACCOUNT"
+        type="Submit"
+        disabled={!(formik.isValid && formik.dirty)}
+      />
+    </form>
   );
 };
+
+export const EmployeeForm = withRouter(Form);
