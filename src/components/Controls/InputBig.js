@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     "& .MuiInputBase-input": {
       height: "1em",
     },
-    width: "184px",
+    width: "378px",
     height: "47px",
     padding: "0",
   },
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Input = (props) => {
+export const InputBig = (props) => {
   const classes = useStyles();
   const { name, label, value, error = null, onChange, onBlur } = props;
   console.log("Input -> error", error);

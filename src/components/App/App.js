@@ -57,6 +57,9 @@ const useStyles = makeStyles({
     minHeight: "1050px",
     height: "100vh",
     display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
 });
 

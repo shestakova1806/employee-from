@@ -86,8 +86,18 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
   },
+  line: {
+    backgroundColor: "#3AB047",
+    border: "1.5px solid #3AB047",
+    width: "48px",
+    marginLeft: "48px",
+    marginTop: "57px",
+  },
   header: {
     fontSize: "25px",
+    fontWeight: "700",
+    marginLeft: "48px",
+    marginTop: "12px",
     marginBottom: "40px",
   },
   row: {
@@ -113,9 +123,10 @@ const Form = (props) => {
 
   return (
     <form onSubmit={formik.handleSubmit} className={classes.root}>
+      <hr className={classes.line} />
       <div className={classes.header}>Sign up</div>
       <div className={classes.row}>
-        <Controls.Input
+        <Controls.InputSmall
           name="firstName"
           label="First Name"
           value={formik.values.firstName}
@@ -123,7 +134,7 @@ const Form = (props) => {
           onChange={formik.handleChange}
           error={formik.touched.firstName && formik.errors.firstName}
         />
-        <Controls.Input
+        <Controls.InputSmall
           name="lastName"
           label="Last Name"
           value={formik.values.lastName}
@@ -134,7 +145,7 @@ const Form = (props) => {
         />
       </div>
       <div className={classes.row}>
-        <Controls.Input
+        <Controls.InputSmall
           name="phoneNumber"
           label="Phone Number"
           value={formik.values.phoneNumber}
@@ -154,7 +165,7 @@ const Form = (props) => {
         />
       </div>
       <div className={classes.row}>
-        <Controls.Input
+        <Controls.InputBig
           name="email"
           label="Email"
           value={formik.values.email}
@@ -164,7 +175,7 @@ const Form = (props) => {
         />
       </div>
       <div className={classes.row}>
-        <Controls.Input
+        <Controls.InputBig
           name="confirmEmail"
           label="Confirm Email"
           value={formik.values.confirmEmail}
@@ -174,7 +185,7 @@ const Form = (props) => {
         />
       </div>
       <div className={classes.row}>
-        <Controls.Input
+        <Controls.InputBig
           name="password"
           label="Password"
           value={formik.values.password}
@@ -184,7 +195,7 @@ const Form = (props) => {
         />
       </div>
       <div className={classes.row}>
-        <Controls.Input
+        <Controls.InputBig
           name="confirmPassword"
           label="Confirm Password"
           value={formik.values.confirmPassword}
@@ -195,18 +206,22 @@ const Form = (props) => {
           }
         />
       </div>
-      <Controls.Checkbox
-        name="isAdult"
-        label="I certify that I am 18 years of age or older, and I agree to the Terms of Service and Privacy Policy."
-        value={formik.values.isAdult}
-        onChange={formik.handleChange}
-      />
-      <Controls.Checkbox
-        name="isGetNews"
-        label="I would like to receive important information and periodic news updates."
-        value={formik.values.isGetNews}
-        onChange={formik.handleChange}
-      />
+      <div className={classes.row}>
+        <Controls.Checkbox
+          name="isAdult"
+          label="I certify that I am 18 years of age or older, and I agree to the Terms of Service and Privacy Policy."
+          value={formik.values.isAdult}
+          onChange={formik.handleChange}
+        />
+      </div>
+      <div className={classes.row}>
+        <Controls.Checkbox
+          name="isGetNews"
+          label="I would like to receive important information and periodic news updates."
+          value={formik.values.isGetNews}
+          onChange={formik.handleChange}
+        />
+      </div>
       <Controls.Button
         text="CREATE ACCOUNT"
         type="Submit"
