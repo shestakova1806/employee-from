@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withEmployeeService } from "../hoc";
+import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { fetchEmployees, changedVacation } from "../../actions";
@@ -12,17 +13,31 @@ import { EmployeeListItem } from "../EmployeeListItem";
 
 import "./EmployeeList.css";
 
+const useStyles = makeStyles({
+  root: {
+    padding: "0",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  listItem: {
+    padding: "0",
+    margin: "0",
+    alignItems: "flex-start",
+    marginTop: "22px",
+    marginBottom: "22px",
+  },
+});
+
 const EmployeeListItems = ({ employees, onChangedVacation }) => {
+  const classes = useStyles();
+
   return (
-    <List>
+    <List className={classes.root}>
       {employees.map((employee) => {
         return (
-          <ListItem
-            alignItems="flex-start"
-            padding="0"
-            margin="0"
-            key={employee.id}
-          >
+          <ListItem className={classes.listItem} key={employee.id}>
             <EmployeeListItem
               employee={employee}
               onChangedVacation={() => onChangedVacation(employee.id)}

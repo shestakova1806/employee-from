@@ -54,6 +54,9 @@ const theme = createMuiTheme({
 const useStyles = makeStyles({
   root: {
     background: "#ECF6FE",
+    minHeight: "1050px",
+    height: "100vh",
+    display: "flex",
   },
 });
 

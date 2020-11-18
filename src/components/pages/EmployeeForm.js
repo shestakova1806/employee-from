@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Controls } from "../Controls/Controls";
+import { makeStyles } from "@material-ui/core";
 
 const validationSchema = yup.object({
   firstName: yup
@@ -77,7 +78,29 @@ const invest = [
   },
 ];
 
+const useStyles = makeStyles({
+  root: {
+    width: "470px",
+    height: "790px",
+    background: "#FFFFFF",
+    display: "flex",
+    flexDirection: "column",
+  },
+  header: {
+    fontSize: "25px",
+    marginBottom: "40px",
+  },
+  row: {
+    display: "flex",
+    justifyContent: "space-between",
+
+    margin: "7px 44px 21px 46px",
+  },
+});
+
 const Form = (props) => {
+  const classes = useStyles();
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
@@ -89,72 +112,89 @@ const Form = (props) => {
   console.log(formik);
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <Controls.Input
-        name="firstName"
-        label="First Name"
-        value={formik.values.firstName}
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        error={formik.touched.firstName && formik.errors.firstName}
-      />
-      <Controls.Input
-        name="lastName"
-        label="Last Name"
-        value={formik.values.lastName}
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        error={formik.touched.lastName && formik.errors.lastName}
-      />
-      <Controls.Input
-        name="phoneNumber"
-        label="Phone Number"
-        value={formik.values.phoneNumber}
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        error={formik.touched.phoneNumber && formik.errors.phoneNumber}
-      />
-      <Controls.Select
-        name="amountToInvest"
-        label="Amount To Invest"
-        value={formik.values.amountToInvest}
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        options={invest}
-        error={formik.touched.amountToInvest && formik.errors.amountToInvest}
-      />
-      <Controls.Input
-        name="email"
-        label="Email"
-        value={formik.values.email}
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        error={formik.touched.email && formik.errors.email}
-      />
-      <Controls.Input
-        name="confirmEmail"
-        label="Confirm Email"
-        value={formik.values.confirmEmail}
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        error={formik.touched.confirmEmail && formik.errors.confirmEmail}
-      />
-      <Controls.Input
-        name="password"
-        label="Password"
-        value={formik.values.password}
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        error={formik.touched.password && formik.errors.password}
-      />
-      <Controls.Input
-        name="confirmPassword"
-        label="Confirm Password"
-        value={formik.values.confirmPassword}
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        error={formik.touched.confirmPassword && formik.errors.confirmPassword}
-      />
+    <form onSubmit={formik.handleSubmit} className={classes.root}>
+      <div className={classes.header}>Sign up</div>
+      <div className={classes.row}>
+        <Controls.Input
+          name="firstName"
+          label="First Name"
+          value={formik.values.firstName}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.firstName && formik.errors.firstName}
+        />
+        <Controls.Input
+          name="lastName"
+          label="Last Name"
+          value={formik.values.lastName}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.lastName && formik.errors.lastName}
+          className={classes.controls}
+        />
+      </div>
+      <div className={classes.row}>
+        <Controls.Input
+          name="phoneNumber"
+          label="Phone Number"
+          value={formik.values.phoneNumber}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.phoneNumber && formik.errors.phoneNumber}
+          className={classes.controls}
+        />
+        <Controls.Select
+          name="amountToInvest"
+          label="Amount To Invest"
+          value={formik.values.amountToInvest}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          options={invest}
+          error={formik.touched.amountToInvest && formik.errors.amountToInvest}
+        />
+      </div>
+      <div className={classes.row}>
+        <Controls.Input
+          name="email"
+          label="Email"
+          value={formik.values.email}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.email && formik.errors.email}
+        />
+      </div>
+      <div className={classes.row}>
+        <Controls.Input
+          name="confirmEmail"
+          label="Confirm Email"
+          value={formik.values.confirmEmail}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.confirmEmail && formik.errors.confirmEmail}
+        />
+      </div>
+      <div className={classes.row}>
+        <Controls.Input
+          name="password"
+          label="Password"
+          value={formik.values.password}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={formik.touched.password && formik.errors.password}
+        />
+      </div>
+      <div className={classes.row}>
+        <Controls.Input
+          name="confirmPassword"
+          label="Confirm Password"
+          value={formik.values.confirmPassword}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
+        />
+      </div>
       <Controls.Checkbox
         name="isAdult"
         label="I certify that I am 18 years of age or older, and I agree to the Terms of Service and Privacy Policy."
