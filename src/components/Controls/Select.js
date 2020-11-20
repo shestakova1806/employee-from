@@ -10,6 +10,15 @@ import {
 
 const useStyles = makeStyles({
   root: {
+    "& .MuiInputBase-root": {
+      height: "51px",
+    },
+    "& .MuiOutlinedInput-root": {
+      borderRadius: "0",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#EFEFEF",
+    },
     "& .MuiFormHelperText-root": {
       fontFamily: "Lato",
       fontSize: "12px",
@@ -31,9 +40,6 @@ const useStyles = makeStyles({
     "& .MuiFormLabel-root": {
       fontFamily: "Lato",
       fontSize: "14px",
-    },
-    "& .MuiInputBase-input": {
-      height: "1em",
     },
     "& .MuiSelect-selectMenu": {
       fontFamily: "Lato",
@@ -58,14 +64,8 @@ const useStyles = makeStyles({
     },
   },
   menuItem: {
-    "& .MuiSelect-selectMenu": {
-      fontFamily: "Lato",
-      fontSize: "14px",
-    },
-    "& .MuiMenuItem-root": {
-      fontFamily: "Lato",
-      fontSize: "14px",
-    },
+    fontFamily: "Lato",
+    fontSize: "14px",
   },
 });
 

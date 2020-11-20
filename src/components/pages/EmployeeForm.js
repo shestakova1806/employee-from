@@ -81,7 +81,7 @@ const invest = [
 const useStyles = makeStyles({
   root: {
     width: "470px",
-    height: "790px",
+    height: "850px",
     background: "#FFFFFF",
     display: "flex",
     flexDirection: "column",
@@ -103,8 +103,35 @@ const useStyles = makeStyles({
   row: {
     display: "flex",
     justifyContent: "space-between",
-
-    margin: "7px 44px 21px 46px",
+    margin: "5px 44px 24px 46px",
+  },
+  checkboxRow: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
+    margin: "0px 44px 4px 50px",
+  },
+  buttonRow: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  button: {
+    width: "201px",
+    height: "47px",
+    marginTop: "38px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 0,
+    color: "FFFFFF",
+    "& .MuiButton-label": {
+      fontSize: "14px",
+      fontWeight: "700",
+      letterSpacing: "3px",
+      color: "#FFFFFF",
+    },
   },
 });
 
@@ -206,15 +233,15 @@ const Form = (props) => {
           }
         />
       </div>
-      <div className={classes.row}>
+      <div className={classes.checkboxRow}>
         <Controls.Checkbox
           name="isAdult"
-          label="I certify that I am 18 years of age or older, and I agree to the Terms of Service and Privacy Policy."
+          label="I certify that I am 18 years of age or older, and I agree to theTerms of Service and Privacy Policy."
           value={formik.values.isAdult}
           onChange={formik.handleChange}
         />
       </div>
-      <div className={classes.row}>
+      <div className={classes.checkboxRow}>
         <Controls.Checkbox
           name="isGetNews"
           label="I would like to receive important information and periodic news updates."
@@ -222,11 +249,14 @@ const Form = (props) => {
           onChange={formik.handleChange}
         />
       </div>
-      <Controls.Button
-        text="CREATE ACCOUNT"
-        type="Submit"
-        disabled={!(formik.isValid && formik.dirty)}
-      />
+      <div className={classes.buttonRow}>
+        <Controls.Button
+          text="CREATE ACCOUNT"
+          type="Submit"
+          disabled={!(formik.isValid && formik.dirty)}
+          className={classes.button}
+        />
+      </div>
     </form>
   );
 };

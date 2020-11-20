@@ -11,6 +11,17 @@ const useStyles = makeStyles({
     "& .MuiTypography-body1": {
       fontSize: "14px",
     },
+    "& .MuiSvgIcon-root": {
+      width: "25px",
+      height: "25px",
+      borderRadius: "0",
+    },
+    "& .MuiCheckbox-colorPrimary.Mui-checked ": {
+      color: "#1EAAFC",
+    },
+    "& .MuiCheckbox-root": {
+      color: "#EFEFEF",
+    },
   },
 });
 

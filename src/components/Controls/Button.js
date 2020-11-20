@@ -1,14 +1,13 @@
 import React from "react";
 import { Button as SubmitButton, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
-    margin: theme.spacing(0.5),
+    marginTop: "20px",
+    width: "201px",
+    height: "47px",
   },
-  label: {
-    textTransform: "none",
-  },
-}));
+});
 
 export const Button = (props) => {
   const { text, size, color, variant, onClick, ...other } = props;
@@ -21,7 +20,7 @@ export const Button = (props) => {
       color="primary"
       onClick={onClick}
       {...other}
-      classes={{ root: classes.root, label: classes.label }}
+      classes={classes.root}
     >
       {text}
     </SubmitButton>

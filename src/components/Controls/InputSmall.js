@@ -4,6 +4,12 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
+    "& .MuiOutlinedInput-root": {
+      borderRadius: "0",
+    },
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#EFEFEF",
+    },
     "& .Mui-error": {
       fontFamily: "Lato",
       fontSize: "14px",
