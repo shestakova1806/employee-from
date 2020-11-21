@@ -12,6 +12,8 @@ const useStyles = makeStyles({
   root: {
     "& .MuiInputBase-root": {
       height: "51px",
+      fontFamily: "Lato",
+      fontSize: "14px",
     },
     "& .MuiOutlinedInput-root": {
       borderRadius: "0",

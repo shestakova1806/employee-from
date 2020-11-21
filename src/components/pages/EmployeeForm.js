@@ -4,6 +4,10 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { Controls } from "../Controls/Controls";
 import { makeStyles } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const validationSchema = yup.object({
   firstName: yup
@@ -125,7 +129,6 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     padding: 0,
-    color: "FFFFFF",
     "& .MuiButton-label": {
       fontSize: "14px",
       fontWeight: "700",
@@ -136,9 +139,39 @@ const useStyles = makeStyles({
   blue: {
     color: "#1EAAFC",
   },
+  eye: {
+    "& .MuiSvgIcon-root": {
+      width: "21px",
+      height: "21px",
+    },
+    "& .MuiIconButton-root": {
+      color: "#EFEFEF",
+    },
+  },
 });
 
 const Form = (props) => {
+  const [values, setValues] = React.useState({
+    showPassword: false,
+    showConfirmPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleClickShowConfirmPassword = () => {
+    setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleMouseDownConfirmPassword = (event) => {
+    event.preventDefault();
+  };
+
   const classes = useStyles();
 
   const formik = useFormik({
@@ -215,24 +248,54 @@ const Form = (props) => {
         />
       </div>
       <div className={classes.row}>
-        <Controls.InputBig
+        <Controls.InputPassword
           name="password"
           label="Password"
           value={formik.values.password}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
+          type={values.showPassword ? "text" : "password"}
           error={formik.touched.password && formik.errors.password}
-        ></Controls.InputBig>
+          endAdornment={
+            <InputAdornment position="end" className={classes.eye}>
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+        />
       </div>
       <div className={classes.row}>
-        <Controls.InputBig
+        <Controls.InputPassword
           name="confirmPassword"
           label="Confirm Password"
           value={formik.values.confirmPassword}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
+          type={values.showConfirmPassword ? "text" : "password"}
           error={
             formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
+          endAdornment={
+            <InputAdornment position="end" className={classes.eye}>
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowConfirmPassword}
+                onMouseDown={handleMouseDownConfirmPassword}
+                edge="end"
+              >
+                {values.showConfirmPassword ? (
+                  <Visibility />
+                ) : (
+                  <VisibilityOff />
+                )}
+              </IconButton>
+            </InputAdornment>
           }
         />
       </div>
