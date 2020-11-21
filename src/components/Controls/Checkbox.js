@@ -14,7 +14,9 @@ const useStyles = makeStyles({
     "& .MuiSvgIcon-root": {
       width: "25px",
       height: "25px",
-      borderRadius: "0",
+    },
+    "& .PrivateSwitchBase-root-24": {
+      padding: "0 9px 20px 4px",
     },
     "& .MuiCheckbox-colorPrimary.Mui-checked ": {
       color: "#1EAAFC",

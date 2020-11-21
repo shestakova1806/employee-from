@@ -133,6 +133,9 @@ const useStyles = makeStyles({
       color: "#FFFFFF",
     },
   },
+  blue: {
+    color: "#1EAAFC",
+  },
 });
 
 const Form = (props) => {
@@ -219,7 +222,7 @@ const Form = (props) => {
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           error={formik.touched.password && formik.errors.password}
-        />
+        ></Controls.InputBig>
       </div>
       <div className={classes.row}>
         <Controls.InputBig
@@ -236,7 +239,13 @@ const Form = (props) => {
       <div className={classes.checkboxRow}>
         <Controls.Checkbox
           name="isAdult"
-          label="I certify that I am 18 years of age or older, and I agree to theTerms of Service and Privacy Policy."
+          label={
+            <div>
+              I certify that I am 18 years of age or older, and I agree to the{" "}
+              <span className={classes.blue}>Terms of Service</span> and{" "}
+              <span className={classes.blue}>Privacy Policy.</span>
+            </div>
+          }
           value={formik.values.isAdult}
           onChange={formik.handleChange}
         />

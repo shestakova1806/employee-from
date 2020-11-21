@@ -24,6 +24,7 @@ const useStyles = makeStyles({
     "& .MuiFormLabel-root": {
       fontFamily: "Lato",
       fontSize: "14px",
+      color: "#C2C2C2",
     },
     "& .MuiInputBase-input": {
       height: "1em",

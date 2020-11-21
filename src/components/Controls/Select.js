@@ -32,6 +32,7 @@ const useStyles = makeStyles({
     "& .MuiSvgIcon-root": {
       width: "0.5em",
       height: "0.5em",
+      color: "#C2C2C2",
     },
     "& .MuiMenuItem-root": {
       fontFamily: "Lato",
@@ -40,6 +41,7 @@ const useStyles = makeStyles({
     "& .MuiFormLabel-root": {
       fontFamily: "Lato",
       fontSize: "14px",
+      color: "#C2C2C2",
     },
     "& .MuiSelect-selectMenu": {
       fontFamily: "Lato",
