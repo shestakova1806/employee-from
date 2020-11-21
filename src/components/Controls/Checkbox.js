@@ -15,7 +15,7 @@ const useStyles = makeStyles({
       width: "25px",
       height: "25px",
     },
-    "& .PrivateSwitchBase-root-24": {
+    "& .MuiIconButton-root": {
       padding: "0 9px 20px 4px",
     },
     "& .MuiCheckbox-colorPrimary.Mui-checked ": {
