@@ -139,39 +139,9 @@ const useStyles = makeStyles({
   blue: {
     color: "#1EAAFC",
   },
-  eye: {
-    "& .MuiSvgIcon-root": {
-      width: "21px",
-      height: "21px",
-    },
-    "& .MuiIconButton-root": {
-      color: "#EFEFEF",
-    },
-  },
 });
 
 const Form = (props) => {
-  const [values, setValues] = React.useState({
-    showPassword: false,
-    showConfirmPassword: false,
-  });
-
-  const handleClickShowPassword = (propName) => {
-    setValues({ ...values, [propName]: !values[propName] });
-  };
-
-  const togglePassword = () => {
-    return handleClickShowPassword("showPassword");
-  };
-
-  const toggleConfirmPassword = () => {
-    return handleClickShowPassword("showConfirmPassword");
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   const classes = useStyles();
 
   const formik = useFormik({
@@ -254,20 +224,7 @@ const Form = (props) => {
           value={formik.values.password}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          type={values.showPassword ? "text" : "password"}
           error={formik.touched.password && formik.errors.password}
-          endAdornment={
-            <InputAdornment position="end" className={classes.eye}>
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={togglePassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment>
-          }
         />
       </div>
       <div className={classes.row}>
@@ -277,25 +234,8 @@ const Form = (props) => {
           value={formik.values.confirmPassword}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          type={values.showConfirmPassword ? "text" : "password"}
           error={
             formik.touched.confirmPassword && formik.errors.confirmPassword
-          }
-          endAdornment={
-            <InputAdornment position="end" className={classes.eye}>
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={toggleConfirmPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {values.showConfirmPassword ? (
-                  <Visibility />
-                ) : (
-                  <VisibilityOff />
-                )}
-              </IconButton>
-            </InputAdornment>
           }
         />
       </div>
