@@ -1,12 +1,10 @@
-export const reducer = (state, action) => {
-  if (state === undefined) {
-    return {
-      employees: [],
-      loading: true,
-      error: null,
-    };
-  }
+const initialState = {
+  employees: [],
+  loading: true,
+  error: null,
+};
 
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_EMPLOYEES_REQUEST":
       return {

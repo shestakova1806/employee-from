@@ -28,7 +28,7 @@ export class EmployeeService {
   getEmployees() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (Math.random() > 0.9) {
+        if (Math.random() > 0.99) {
           reject(new Error("Something bad happend"));
         } else {
           resolve(this.data);
