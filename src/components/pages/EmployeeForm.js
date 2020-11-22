@@ -156,19 +156,19 @@ const Form = (props) => {
     showConfirmPassword: false,
   });
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+  const handleClickShowPassword = (propName) => {
+    setValues({ ...values, [propName]: !values[propName] });
   };
 
-  const handleClickShowConfirmPassword = () => {
-    setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
+  const togglePassword = () => {
+    return handleClickShowPassword("showPassword");
+  };
+
+  const toggleConfirmPassword = () => {
+    return handleClickShowPassword("showConfirmPassword");
   };
 
   const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handleMouseDownConfirmPassword = (event) => {
     event.preventDefault();
   };
 
@@ -260,7 +260,7 @@ const Form = (props) => {
             <InputAdornment position="end" className={classes.eye}>
               <IconButton
                 aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
+                onClick={togglePassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
               >
@@ -285,8 +285,8 @@ const Form = (props) => {
             <InputAdornment position="end" className={classes.eye}>
               <IconButton
                 aria-label="toggle password visibility"
-                onClick={handleClickShowConfirmPassword}
-                onMouseDown={handleMouseDownConfirmPassword}
+                onClick={toggleConfirmPassword}
+                onMouseDown={handleMouseDownPassword}
                 edge="end"
               >
                 {values.showConfirmPassword ? (
