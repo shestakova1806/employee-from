@@ -46,7 +46,7 @@ export const InputSmall = (props) => {
   return (
     <TextField
       className={classes.root}
-      InputProps={{
+      inputprops={{
         className: classes.input,
       }}
       variant="outlined"

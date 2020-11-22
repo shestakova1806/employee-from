@@ -4,10 +4,6 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { Controls } from "../Controls/Controls";
 import { makeStyles } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const validationSchema = yup.object({
   firstName: yup

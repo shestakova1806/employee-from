@@ -35,11 +35,6 @@ const useStyles = makeStyles({
       fontSize: "14px",
       color: "#C2C2C2",
     },
-    "& .MuiFormLabel-root": {
-      fontFamily: "Lato",
-      fontSize: "14px",
-      color: "#C2C2C2",
-    },
     "& .MuiOutlinedInput-notchedOutline": {
       borderColor: "#EFEFEF",
     },
@@ -79,7 +74,7 @@ export const InputPassword = (props) => {
       className={classes.root}
       variant="outlined"
       {...(error && { error: true })}
-      InputProps={{
+      inputprops={{
         className: classes.input,
       }}
     >
@@ -102,7 +97,7 @@ export const InputPassword = (props) => {
             </IconButton>
           </InputAdornment>
         }
-        InputProps={{
+        inputprops={{
           className: classes.input,
         }}
       />

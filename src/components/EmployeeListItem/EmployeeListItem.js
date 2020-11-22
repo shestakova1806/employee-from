@@ -8,8 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 
-import "./EmployeeListItem.css";
-
 const theme = createMuiTheme({
   palette: {
     primary: {

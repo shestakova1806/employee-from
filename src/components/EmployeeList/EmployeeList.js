@@ -11,8 +11,6 @@ import { ErrorIndicator } from "../ErrorIndicator";
 import { compose } from "../../utils";
 import { EmployeeListItem } from "../EmployeeListItem";
 
-import "./EmployeeList.css";
-
 const useStyles = makeStyles({
   root: {
     padding: "0",

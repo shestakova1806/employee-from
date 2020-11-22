@@ -82,13 +82,13 @@ export const Select = (props) => {
       variant="outlined"
       {...(error && { error: true })}
       className={classes.root}
-      InputProps={{
+      inputprops={{
         className: classes.input,
       }}
     >
       <InputLabel className={classes.label}>Amount to invest</InputLabel>
       <MuiSelect
-        InputProps={{
+        inputprops={{
           className: classes.input,
         }}
         label={label}
@@ -105,7 +105,7 @@ export const Select = (props) => {
             key={item.id}
             value={item.value}
             className={classes.menuItem}
-            InputProps={{
+            inputprops={{
               className: classes.input,
             }}
           >

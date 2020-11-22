@@ -4,11 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-
 import { EmployeeForm, HomePage } from "../pages";
-
-import "./App.css";
-
 import LatoRegular from "../../fonts/Lato-Regular.ttf";
 
 const lato = {
